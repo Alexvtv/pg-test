@@ -1,0 +1,57 @@
+.item {
+  width: 500px;
+  border: 1px solid #cccccc;
+  padding: 10px;
+  margin: 15px 0;
+  border-radius: 15px;
+
+  @media screen and (max-width: 1200px) {
+    width: 440px;
+  }
+  @media screen and (max-width: 992px) {
+    width: 500px;
+  }
+  @media screen and (max-width: 576px) {
+    width: 300px;
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 25px;
+    margin-bottom: 10px;
+  }
+
+  &__text {
+    position: relative;
+    font-size: 16px;
+    height: 88px;
+    overflow: hidden;
+  }
+
+  &__text:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 30px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 1) 80%);
+  }
+
+  &__date {
+    margin-top: 10px;
+    color: #858585;
+    text-align: right;
+  }
+
+  &__buttons {
+    margin-top: 10px;
+
+    & > button {
+      cursor: pointer;
+      margin: 0 10px;
+      padding: 5px 15px;
+      font-size: 16px;
+    }
+  }
+}

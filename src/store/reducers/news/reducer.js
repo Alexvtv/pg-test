@@ -9,12 +9,14 @@ export const {actions, reducer} = createSlice({
             {
                 title: 'lorem 1',
                 text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-                published: false
+                published: false,
+                date: 1649523776125
             },
             {
                 title: 'lorem 2',
                 text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
-                published: true
+                published: true,
+                date: 1649523776955
             }
         ],
     },

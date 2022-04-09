@@ -1,12 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {useSelector} from 'react-redux';
 
-import {Form} from './parts';
+import {Form, Item} from './parts';
 import {changeList} from '../../../store/reducers/news/dispatchers';
 
 import styles from './News.module.scss';
 
 export const News = () => {
+    const [searchValue, setSearchValue] = useState('');
     const {news, account} = useSelector(store => store);
     const {list} = news;
     const {accData} = account;
@@ -19,21 +20,25 @@ export const News = () => {
         : news));
     const remove = (index) => changeList(list.filter((news, idx) => index !== idx));
 
-    const resultList = isAdmin
-        ? list
-        : list.filter(({published}) => published);
+    const resultList = list.filter(({text, title, published}) =>
+        (title.includes(searchValue) || text.includes(searchValue)) && (published || isAdmin));
 
     return <div className={styles.news}>
         {isUser && <Form/>}
+        <input
+            className={styles.news__search}
+            placeholder={'поиск'}
+            value={searchValue}
+            onChange={e => setSearchValue(e.target.value)}/>
         <div className={styles.news__list}>
-            {resultList.map(({title, text, published}, index) => <div className={styles.news__item} key={index}>
-                <p className={styles.news__title}>{title}</p>
-                <p className={styles.news__text}>{text}</p>
-                {isAdmin && <div className={styles.news__buttons}>
-                    {!published && <button onClick={() => publish(index)}>Опубликовать</button>}
-                    <button onClick={() => remove(index)}>Удалить</button>
-                </div>}
-            </div>)}
+            {resultList.map((item, index) =>
+                <Item
+                    key={index}
+                    item={item}
+                    isAdmin={isAdmin}
+                    index={index}
+                    publish={publish}
+                    remove={remove}/>)}
         </div>
     </div>;
 };

@@ -9,7 +9,7 @@ export const Form = () => {
     const [text, setText] = useState('');
 
     const handler = () => {
-        addNews({title, text});
+        addNews({title, text, date: Date.now()});
         setText('');
         setTitle('');
     };
