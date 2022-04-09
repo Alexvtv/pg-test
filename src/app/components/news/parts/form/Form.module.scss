@@ -1,0 +1,50 @@
+.form {
+  margin: 20px 0 0 calc(50% - 250px);
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (max-width: 576px) {
+    width: 310px;
+    margin: 20px 0 0 0;
+  }
+
+  &__row {
+    display: flex;
+    text-align: right;
+
+    & > textarea {
+      font-size: 14px;
+      resize: none;
+      width: 410px;
+      height: 110px;
+      @media screen and (max-width: 576px) {
+        width: 210px;
+      }
+    }
+
+    & > input {
+      font-size: 17px;
+      margin-bottom: 10px;
+      resize: none;
+      width: 410px;
+      height: 34px;
+      @media screen and (max-width: 576px) {
+        width: 210px;
+      }
+    }
+  }
+
+  & > button {
+    cursor: pointer;
+   font-size: 20px;
+    height: 44px;
+    width: 140px;
+    margin: 20px auto;
+  }
+
+  &__label {
+    width: 90px;
+    margin-right: 10px;
+  }
+}

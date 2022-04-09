@@ -1,0 +1,1 @@
+export {accountCheck} from './accountCheck';
